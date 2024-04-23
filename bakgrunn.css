@@ -1,5 +1,4 @@
-.Container {
-    display: flex;
+.Container {    display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
     background-color: rgb(0, 0, 0);
@@ -8,8 +7,7 @@
     padding: 20px;
     margin: 20px;
     width: 15%;
-    height: 1150px;
-    user-select: none;
+    height: 1150px;   user-select: none;
 }
 .Container2 {
     display: flex;
@@ -58,7 +56,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto;
-    width: 90%;
+    width: 20%;
     height: 28%;
     
 
@@ -77,9 +75,8 @@ body {
 
 .rotate_carti{
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 150px;
+    
+    width: 60px;
     height: 150px;
     margin: -60px 0 0 150px;
     -webkit-animation: spin 1s linear infinite;
