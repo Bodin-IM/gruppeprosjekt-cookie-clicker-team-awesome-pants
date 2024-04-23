@@ -31,3 +31,15 @@ function Upgradeclickerclicked(){
         alert("not enough cartis")
     }
 }
+
+var data = {
+    "Cartis": cartis,
+    "multiplier": multiplier,
+    "multiplierCost": multiplierCost,
+}
+localStorage.setItem("data", JSON.stringify(data))
+
+console.log(data)
+
+
+data = JSON.parse(localStorage.getItem("data"))
