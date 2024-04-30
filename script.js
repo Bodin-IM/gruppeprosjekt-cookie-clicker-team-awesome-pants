@@ -1,3 +1,7 @@
+data = JSON.parse(localStorage.getItem("data"))
+
+console.log(data)
+
 let carti = document.getElementById("PlayboiCarti")
 let DisplayCarti = document.getElementById("DisplayCarti")
 let Upgradeclicker = document.getElementById("UpgClicker")
@@ -33,13 +37,13 @@ function Upgradeclickerclicked(){
 }
 
 var data = {
-    "Cartis": cartis,
-    "multiplier": multiplier,
-    "multiplierCost": multiplierCost,
+    "Cartis": cartis +100,
+    "multiplier": multiplier + 100,
+    "multiplierCost": multiplierCost +100,
 }
+
+
 localStorage.setItem("data", JSON.stringify(data))
 
-console.log(data)
 
 
-data = JSON.parse(localStorage.getItem("data"))
