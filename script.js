@@ -18,12 +18,14 @@ function cartisClicked(){
     cartis = cartis + multiplier
     DisplayCartisamt()
 }
-
+const Fwæ_sound = new Audio();
+Fwæ_sound.src="FWæ.mp3"
 function DisplayCartisamt(){
     DisplayCarti.innerHTML = ("<p>You have " + cartis + " Cartis")
 }
 
 function Upgradeclickerclicked(){
+    Fwæ_sound.play()
     if (cartis >= multiplierCost){
         cartis = cartis - multiplierCost
         multiplier = multiplier + 1
