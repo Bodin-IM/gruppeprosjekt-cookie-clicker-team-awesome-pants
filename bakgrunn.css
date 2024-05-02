@@ -13,7 +13,7 @@
 .Container2 {
     display: flex;
     flex-direction: column;
-    
+    justify-content: start;
     background-color: rgb(0, 0, 0);
     border: solid 5px rgb(255, 255, 255);
     border-radius: 5px;
@@ -87,6 +87,42 @@ body {
     animation: spin 10s linear infinite;
 }
 #displayUpgradecost {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    user-select: none;
+
+}
+#displayUpgradecost2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    user-select: none;
+
+}
+#displayUpgradecost3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    user-select: none;
+
+}
+#displayUpgradecost4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    user-select: none;
+
+}
+#displayUpgradecost5 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
