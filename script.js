@@ -1,18 +1,36 @@
-data = JSON.parse(localStorage.getItem("data"))
+if (localStorage.getItem("data") === null) {
+    data = {
+        Cartis: 0,
+        multiplier: 1,
+        multiplierCost: 25,
+        upgradecount: 0
+    }
+    localStorage.setItem("data", JSON.stringify(data))
+} else {
+    data = JSON.parse(localStorage.getItem("data"))
+}
+
+
+
 
 console.log(data)
 
 let carti = document.getElementById("PlayboiCarti")
+let save = document.getElementById("SaveButton")
+let wipe = document.getElementById("WipeButton")
 let DisplayCarti = document.getElementById("DisplayCarti")
 let Upgradeclicker = document.getElementById("UpgClicker")
 let displayUpgradecost = document.getElementById("displayUpgradecost")
 
 carti.addEventListener("click", cartisClicked)
 Upgradeclicker.addEventListener("click", Upgradeclickerclicked)
+save.addEventListener("click", saveClicked)
+wipe.addEventListener("click", wipeClicked)
 
-let cartis = 0
-let multiplier = 1
-let multiplierCost = 25
+let cartis = data.Cartis 
+let multiplier = data.multiplier
+let multiplierCost = data.multiplierCost
+let upgradecount = data.upgradecount
 
 function cartisClicked(){
     cartis = cartis + multiplier
@@ -21,6 +39,8 @@ function cartisClicked(){
 
 function DisplayCartisamt(){
     DisplayCarti.innerHTML = ("<p>You have " + cartis + " Cartis")
+    displayUpgradecost.innerHTML=("<p>Upgrade costs " + multiplierCost + " cartis")
+
 }
 
 function Upgradeclickerclicked(){
@@ -36,14 +56,22 @@ function Upgradeclickerclicked(){
     }
 }
 
-var data = {
-    "Cartis": cartis +100,
-    "multiplier": multiplier + 100,
-    "multiplierCost": multiplierCost +100,
+function wipeClicked(){
+    localStorage.clear("data")
+    location.reload()
 }
 
+function saveClicked(){
+    data = {
+        "Cartis": cartis,
+        "multiplier": multiplier,
+        "multiplierCost": multiplierCost,
+        "upgradecount": upgradecount
+    }
+    localStorage.setItem("data", JSON.stringify(data))
+    console.log("saved:", data)
+}
 
-localStorage.setItem("data", JSON.stringify(data))
-
-
+DisplayCartisamt()
+//localStorage.clear("data")
 
