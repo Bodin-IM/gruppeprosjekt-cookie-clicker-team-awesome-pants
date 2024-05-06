@@ -7,15 +7,14 @@ if (localStorage.getItem("data") === null) {
         multiplierCost3: 500,
         multiplierCost4: 1500,
         multiplierCost5: 5000,
+        TimeMultiplierCost: 100,
+        TimeClicks: 0,
         upgradecount: 0
     }
     localStorage.setItem("data", JSON.stringify(data))
 } else {
     data = JSON.parse(localStorage.getItem("data"))
 }
-
-
-
 
 console.log(data)
 
@@ -33,6 +32,8 @@ let displayUpgradecost2 = document.getElementById("displayUpgradecost2")
 let displayUpgradecost3 = document.getElementById("displayUpgradecost3")
 let displayUpgradecost4 = document.getElementById("displayUpgradecost4")
 let displayUpgradecost5 = document.getElementById("displayUpgradecost5")
+let displayTimeUpgrade = document.getElementById("displayTimeUpgrade")
+let Upgradeclickerclick = document.getElementById("TimeClickss")
 
 carti.addEventListener("click", cartisClicked)
 Upgradeclicker.addEventListener("click", Upgradeclickerclicked)
@@ -40,6 +41,7 @@ Upgradeclicker2.addEventListener("click", Upgradeclicker2clicked)
 Upgradeclicker3.addEventListener("click", Upgradeclicker3clicked)
 Upgradeclicker4.addEventListener("click", Upgradeclicker4clicked)
 Upgradeclicker5.addEventListener("click", Upgradeclicker5clicked)
+Upgradeclickerclick.addEventListener("click", TimeUpgrade)
 save.addEventListener("click", saveClicked)
 wipe.addEventListener("click", wipeClicked)
 
@@ -50,9 +52,11 @@ let multiplierCost2 = data.multiplierCost2
 let multiplierCost3 = data.multiplierCost3
 let multiplierCost4 = data.multiplierCost4
 let multiplierCost5 = data.multiplierCost5
+let TimeMultiplierCost = data.TimeMultiplierCost
+let TimeClicks = data.TimeClicks
 let upgradecount = data.upgradecount
 
-function cartisClicked(){    cartis = cartis + multiplier
+function cartisClicked(){cartis = cartis + multiplier
     DisplayCartisamt()
 }
 
@@ -65,6 +69,7 @@ function DisplayCartisamt(){
     displayUpgradecost3.innerHTML=("<p>Upgrade costs " + multiplierCost3 + " cartis")
     displayUpgradecost4.innerHTML=("<p>Upgrade costs " + multiplierCost4 + " cartis")
     displayUpgradecost5.innerHTML=("<p>Upgrade costs " + multiplierCost5 + " cartis")
+    displayTimeUpgrade.innerHTML=("<p>Upgrade costs " + TimeMultiplierCost + " cartis")
 
 }
 function Upgradeclickerclicked(){
@@ -133,7 +138,25 @@ function Upgradeclicker5clicked(){
         alert("not enough cartis")
     }
 }
+function TimeUpgrade(){
+    if (cartis >= TimeMultiplierCost){
+        TimeClicks = TimeClicks + 1
+        cartis = cartis - TimeMultiplierCost
+        TimeMultiplierCost = Math.round(TimeMultiplierCost * 1.5)
+        displayTimeUpgrade.innerHTML=("<p>Upgrade costs " + TimeMultiplierCost + " cartis")
+        DisplayCartisamt()
+    }
+    else{
+        alert("not enough cartis")
+    }
+}
+function TimeClicksFunction(){ 
+    cartis += TimeClicks
+    DisplayCartisamt()
+    }
 
+
+setInterval(TimeClicksFunction, 1000)
 
 function wipeClicked(){
     localStorage.clear("data")
@@ -153,6 +176,7 @@ function saveClicked(){
     }
     localStorage.setItem("data", JSON.stringify(data))
     console.log("saved:", data)
+    alert("Saved")
 }
 
 DisplayCartisamt()

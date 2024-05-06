@@ -131,6 +131,14 @@ body {
     user-select: none;
 
 }
+#displayTimeUpgrade {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    user-select: none;
+}
 
 #DisplayCarti {
     margin-top: 500px;
