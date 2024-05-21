@@ -62,6 +62,19 @@ function cartisClicked(){cartis = cartis + multiplier
 
 const Fwæ_sound = new Audio();
 Fwæ_sound.src="FWæ.mp3"
+
+const slatt_sound = new Audio();
+slatt_sound.src="slattt.mp3"
+
+const schyeah_sound = new Audio();
+schyeah_sound.src="schyeah.mp3"
+
+const BeeBee_sound = new Audio();
+BeeBee_sound.src="BeeBee.mp3"
+
+const Homicide_sound = new Audio();
+Homicide_sound.src="homcidehomicide.mp3"
+
 function DisplayCartisamt(){
     DisplayCarti.innerHTML = ("<p>You have " + cartis + " Cartis")
     displayUpgradecost.innerHTML=("<p>Upgrade costs " + multiplierCost + " cartis")
@@ -86,7 +99,7 @@ function Upgradeclickerclicked(){
     }
 }
 function Upgradeclicker2clicked(){
-    
+    Homicide_sound.play()
     if (cartis >= multiplierCost2){
         cartis = cartis - multiplierCost2
         multiplier = multiplier + 2
@@ -99,7 +112,7 @@ function Upgradeclicker2clicked(){
     }
 }
 function Upgradeclicker3clicked(){
-    
+    schyeah_sound.play()
     if (cartis >= multiplierCost3){
         cartis = cartis - multiplierCost3
         multiplier = multiplier + 3
@@ -113,7 +126,7 @@ function Upgradeclicker3clicked(){
 }
 
 function Upgradeclicker4clicked(){
-    
+    BeeBee_sound.play()
     if (cartis >= multiplierCost4){
         cartis = cartis - multiplierCost4
         multiplier = multiplier + 4
@@ -126,7 +139,7 @@ function Upgradeclicker4clicked(){
     }
 }
 function Upgradeclicker5clicked(){
-    
+    slatt_sound.play()
     if (cartis >= multiplierCost5){
         cartis = cartis - multiplierCost5
         multiplier = multiplier + 5
