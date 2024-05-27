@@ -1,27 +1,3 @@
-if (localStorage.getItem("data") === null) {
-    data = {
-        Cartis: 0,
-        multiplier: 1,
-        multiplierCost: 25,
-        multiplierCost2: 150,
-        multiplierCost3: 500,
-        multiplierCost4: 1500,
-        multiplierCost5: 3000,
-        TimeMultiplierCost: 100,
-        TimeMultiplierCost2: 250,
-        TimeMultiplierCost3: 750,
-        TimeMultiplierCost4: 1500,
-        TimeMultiplierCost5: 3000,
-        TimeClicks: 0,
-        upgradecount: 0
-    }
-    localStorage.setItem("data", JSON.stringify(data))
-} else {
-    data = JSON.parse(localStorage.getItem("data"))
-}
-
-console.log(data)
-
 let carti = document.getElementById("PlayboiCarti")
 let save = document.getElementById("SaveButton")
 let wipe = document.getElementById("WipeButton")
@@ -42,6 +18,50 @@ let Upgradeclicker2click = document.getElementById("TimeClickss2")
 let Upgradeclicker3click = document.getElementById("TimeClickss3")
 let Upgradeclicker4click = document.getElementById("TimeClickss4")
 let Upgradeclicker5click = document.getElementById("TimeClickss5")
+let Container3_1 = document.getElementById("Container3-1") 
+let Container3_2 = document.getElementById("Container3-2")
+let Container3_3 = document.getElementById("Container3-3")
+let Container3_4 = document.getElementById("Container3-4")
+let Container3_5 = document.getElementById("Container3-5")
+let EL_UpgradeFwayCounter = document.getElementById("UpgradeFwayCounter")
+
+if (localStorage.getItem("data") === null) {
+    data = {
+        Cartis: 0,
+        multiplier: 1,
+        multiplierCost: 25,
+        multiplierCost2: 150,
+        multiplierCost3: 500,
+        multiplierCost4: 1500,
+        multiplierCost5: 3000,
+        TimeMultiplierCost: 100,
+        TimeMultiplierCost2: 250,
+        TimeMultiplierCost3: 750,
+        TimeMultiplierCost4: 1500,
+        TimeMultiplierCost5: 3000,
+        TimeClicks: 0,
+        UpgradeFwayCounter: 0,
+        UpgradeHomicideCounter: 0,
+        UpgradeSchyeahCounter: 0,
+    }
+    localStorage.setItem("data", JSON.stringify(data))
+} else {
+    data = JSON.parse(localStorage.getItem("data"))
+    
+    for (let i = 0; i < data.UpgradeFwayCounter; i++) {
+        makeImage('bilder/cassette.png', Container3_1, "UpgradeImg")
+        }
+    
+    for (let i = 0; i < data.UpgradeHomicideCounter; i++) {
+        makeImage('bilder/vinylting.png', Container3_2, "UpgradeImg2")
+        }
+    
+    for (let i = 0; i < data.UpgradeSchyeahCounter; i++) {
+        makeImage('bilder/VinylSelftitled.png', Container3_3, "UpgradeImg3")
+        }
+}
+
+console.log(data)
 
 carti.addEventListener("click", cartisClicked)
 Upgradeclicker.addEventListener("click", Upgradeclickerclicked)
@@ -70,7 +90,9 @@ let TimeMultiplierCost3 = data.TimeMultiplierCost3
 let TimeMultiplierCost4 = data.TimeMultiplierCost4
 let TimeMultiplierCost5 = data.TimeMultiplierCost5
 let TimeClicks = data.TimeClicks
-let upgradecount = data.upgradecount
+let UpgradeFwayCounter = data.UpgradeFwayCounter
+let UpgradeHomicideCounter = data.UpgradeHomicideCounter
+let UpgradeSchyeahCounter = data.UpgradeSchyeahCounter
 
 function cartisClicked(){cartis = cartis + multiplier
     DisplayCartisamt()
@@ -103,8 +125,11 @@ function DisplayCartisamt(){
     displayTimeUpgrade3.innerHTML=("<p>Upgrade costs " + TimeMultiplierCost3 + " cartis")
     displayTimeUpgrade4.innerHTML=("<p>Upgrade costs " + TimeMultiplierCost4 + " cartis")
     displayTimeUpgrade5.innerHTML=("<p>Upgrade costs " + TimeMultiplierCost5 + " cartis")
+    EL_UpgradeFwayCounter.innerHTML = (UpgradeFwayCounter + " Fway")
+    
 
 }
+
 function Upgradeclickerclicked(){
     Fwæ_sound.play()
     if (cartis >= multiplierCost){
@@ -112,6 +137,9 @@ function Upgradeclickerclicked(){
         multiplier = multiplier + 1
         multiplierCost = Math.round(multiplierCost * 1.3)
         displayUpgradecost.innerHTML=("<p>Upgrade costs " + multiplierCost + " cartis")
+        UpgradeFwayCounter = UpgradeFwayCounter + 1
+
+        makeImage('bilder/cassette.png', Container3_1, "UpgradeImg")
         DisplayCartisamt()
     }
     else{
@@ -125,6 +153,9 @@ function Upgradeclicker2clicked(){
         multiplier = multiplier + 2
         multiplierCost2 = Math.round(multiplierCost2 * 1.4)
         displayUpgradecost2.innerHTML=("<p>Upgrade costs " + multiplierCost2 + " cartis")
+        UpgradeHomicideCounter = UpgradeHomicideCounter + 1
+
+        makeImage('bilder/vinylting.png', Container3_2, "UpgradeImg2")
         DisplayCartisamt()
     }
     else{
@@ -135,9 +166,12 @@ function Upgradeclicker3clicked(){
     schyeah_sound.play()
     if (cartis >= multiplierCost3){
         cartis = cartis - multiplierCost3
-        multiplier = multiplier + 4
+        multiplier = multiplier + 5
         multiplierCost3 = Math.round(multiplierCost3 * 1.5)
         displayUpgradecost3.innerHTML=("<p>Upgrade costs " + multiplierCost3 + " cartis")
+        UpgradeSchyeahCounter = UpgradeSchyeahCounter + 1
+
+        makeImage('bilder/VinylSelftitled.png', Container3_3, "UpgradeImg3")
         DisplayCartisamt()
     }
     else{
@@ -258,12 +292,23 @@ function saveClicked(){
         "TimeMultiplierCost": TimeMultiplierCost,
         "TimeMultiplierCost2": TimeMultiplierCost2,
         "TimeMultiplierCost3": TimeMultiplierCost3,
+        "TimeMultiplierCost4": TimeMultiplierCost4,
+        "TimeMultiplierCost5": TimeMultiplierCost5,
         "TimeClicks": TimeClicks,
-        "upgradecount": upgradecount
+        "UpgradeFwayCounter": UpgradeFwayCounter,
+        "UpgradeHomicideCounter": UpgradeHomicideCounter,
+        "UpgradeSchyeahCounter": UpgradeSchyeahCounter,
     }
     localStorage.setItem("data", JSON.stringify(data))
     console.log("saved:", data)
     alert("Saved")
+}
+
+function makeImage(image_src, placement, class_name) {
+    var Img = document.createElement("img")
+    Img.src = image_src
+    Img.classList.add(class_name)
+    placement.appendChild(Img)
 }
 
 DisplayCartisamt()
